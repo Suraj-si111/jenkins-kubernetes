@@ -12,9 +12,9 @@ gcloud command-line tool installed and authenticated
 A GCP project with billing enabled
 Docker installed on your local machine
 kubectl command-line tool installed
+
 Getting Started
 Clone the repository:
-bash
  
 git clone https://github.com/Suraj-si111/jenkins-kubernetes.git
 Edit the deployment.yaml file and replace the image field with your own Docker image as per your requirements
@@ -26,7 +26,7 @@ Create a Persistent Volume Claim (PVC) to store Jenkins data:
  
 kubectl apply -f pvc.yaml
 Build and push the Docker image to Google Container Registry:
-bash
+
  
 docker build -t gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest .
 docker push gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest
