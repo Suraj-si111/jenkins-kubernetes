@@ -17,6 +17,7 @@ Getting Started
 Clone the repository:
  
 git clone https://github.com/Suraj-si111/jenkins-kubernetes.git
+
 Edit the deployment.yaml file and replace the image field with your own Docker image as per your requirements
 
 Create a Kubernetes namespace for Jenkins:
