@@ -27,7 +27,9 @@ Build and push the Docker image to Google Container Registry:
 
  
 docker build -t gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest .
+
 docker push gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest
+
 Make sure to replace YOUR-PROJECT-ID with your GCP project ID.
 
 Deploy Jenkins using the deployment.yaml file:
