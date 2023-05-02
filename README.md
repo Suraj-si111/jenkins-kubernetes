@@ -13,16 +13,16 @@ kubectl command-line tool installed
 Getting Started
 Clone the repository:
  
-git clone https://github.com/Suraj-si111/jenkins-kubernetes.git
+`git clone https://github.com/Suraj-si111/jenkins-kubernetes.git`
 
 Edit the deployment.yaml file and replace the image field with your own Docker image as per your requirements
 
 Create a Kubernetes namespace for Jenkins:
 
-kubectl create namespace jenkins
+`kubectl create namespace jenkins`
 Create a Persistent Volume Claim (PVC) to store Jenkins data:
  
-kubectl apply -f pvc.yaml
+`kubectl apply -f pvc.yaml`
 Build and push the Docker image to Google Container Registry:
 
  
@@ -34,11 +34,11 @@ Make sure to replace YOUR-PROJECT-ID with your GCP project ID.
 
 Deploy Jenkins using the deployment.yaml file:
  
-kubectl apply -f deployment.yaml
+`kubectl apply -f deployment.yaml`
 Get the Jenkins URL by running the following command:
   
  
-kubectl get service jenkins -n jenkins
+`kubectl get service jenkins -n jenkins`
 Note down the EXTERNAL-IP of the jenkins service.
 
 Access Jenkins using the URL in your browser. You will need to log in with the credentials admin/admin.
@@ -49,5 +49,7 @@ License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 Acknowledgments
+
 Jenkins
+
 Google Kubernetes Engine
