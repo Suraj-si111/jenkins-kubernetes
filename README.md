@@ -15,31 +15,29 @@ kubectl command-line tool installed
 Getting Started
 Clone the repository:
 bash
-Copy code
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-Edit the deployment.yaml file and replace the image field with your own Docker image.
+ 
+git clone https://github.com/Suraj-si111/jenkins-kubernetes.git
+Edit the deployment.yaml file and replace the image field with your own Docker image as per your requirements
 
 Create a Kubernetes namespace for Jenkins:
 
-arduino
-Copy code
 kubectl create namespace jenkins
 Create a Persistent Volume Claim (PVC) to store Jenkins data:
-Copy code
+ 
 kubectl apply -f pvc.yaml
 Build and push the Docker image to Google Container Registry:
 bash
-Copy code
+ 
 docker build -t gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest .
 docker push gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest
 Make sure to replace YOUR-PROJECT-ID with your GCP project ID.
 
 Deploy Jenkins using the deployment.yaml file:
-Copy code
+ 
 kubectl apply -f deployment.yaml
 Get the Jenkins URL by running the following command:
-arduino
-Copy code
+  
+ 
 kubectl get service jenkins -n jenkins
 Note down the EXTERNAL-IP of the jenkins service.
 

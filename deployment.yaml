@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      initContainers:
+      - name: chmod-docker-socket
+        image: alpine:3.14
+        command: ['sh', '-c', 'chmod 666 /var/run/docker.sock']
+        volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: jenkins
+        image: gcr.io/YOUR-PROJECT-ID/custom-jenkins-docker:latest
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "path to gcp application credentials"
+        volumeMounts:
+          - name: gcp-service-account
+            mountPath: /etc/gcp
+          - name: jenkins-home
+            mountPath: /var/jenkins_home
+          - name: docker-socket
+            mountPath: /var/run/docker.sock
+      volumes:
+      - name: gcp-service-account
+        secret:
+          secretName: gcp-service-account
+      - name: jenkins-home
+        persistentVolumeClaim:
+          claimName: jenkins-pvc
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
