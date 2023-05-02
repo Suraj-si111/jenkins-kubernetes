@@ -1,6 +1,3 @@
-
-Sure, I can help you with that. Here's an example of how you could structure your README document:
-
 Jenkins Deployment on Google Kubernetes Engine
 This repository contains code to deploy Jenkins on Google Kubernetes Engine (GKE) using Kubernetes.
 
